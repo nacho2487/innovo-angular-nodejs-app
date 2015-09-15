@@ -1,0 +1,9 @@
+﻿<div data-ng-controller="sidebar as vm">
+    <ul class="nav nav-list">
+        <li class="nlightblue fade-selection-animation" data-ng-class="vm.isCurrent(r)"
+            data-ng-repeat="r in vm.navRoutes">
+            <a href="#{{r.url}}" data-ng-bind-html="r.config.settings.content"></a>
+            <b class="arrow"></b>
+        </li>
+    </ul>
+</div>

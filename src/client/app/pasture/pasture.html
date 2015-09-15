@@ -1,0 +1,27 @@
+﻿<div class="page-header">
+    <h1>
+        Potrero 1
+    </h1>
+</div><!-- /.page-header -->
+<div class="row">
+    <div class="col-sm-12">
+        <div class="tabbable">
+            <ul class="nav nav-tabs">
+                <li ng-class="{active: vm.isActive('/potreros/{{vm.pastureId}}/detalles')}">
+                    <a href="#/potreros/{{vm.pastureId}}/detalles">
+                        Detalles
+                    </a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane fade in active">
+                    <ng-switch on="vm.pastureType">
+                        <div ng-switch-when="detalles">
+                            <div data-ng-include="'client/app/pasture/pasture-detail.html'"></div>
+                        </div>
+                    </ng-switch>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

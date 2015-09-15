@@ -1,0 +1,139 @@
+﻿<div ng-controller="BatchPerformance as vm">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="widget-box transparent">
+                <div class="widget-header widget-header-flat">
+                    <h3 class="widget-title lighter">
+                        Performance general
+                    </h3>
+                </div>
+                <div class="widget-body">
+                    <div class="row">
+                        <div class="space-12"></div>
+                        <div class="col-sm-6">
+                            <div class="widget-box transparent">
+                                <div class="widget-header widget-header-flat">
+                                    <h4 class="widget-title lighter">
+                                        Ganancia diaria promedio
+                                    </h4>
+                                </div>
+
+                                <div class="widget-body">
+                                    <div class="widget-main padding-4">
+                                        <chart model="vm.weightGainAverageData" measures="vm.measures" measure="vm.measure" type="weightGain" class="chart"></chart>
+                                    </div><!-- /.widget-main -->
+                                </div><!-- /.widget-body -->
+                            </div><!-- /.widget-box -->
+                        </div><!-- /.col -->
+                        <div class="col-sm-6">
+                            <div class="widget-box transparent">
+                                <div class="widget-header widget-header-flat">
+                                    <h4 class="widget-title lighter">
+                                        Peso promedio
+                                    </h4>
+                                </div>
+
+                                <div class="widget-body">
+                                    <div class="widget-main padding-4">
+                                        <chart model="vm.weightAverageData" measures="vm.measures" measure="vm.measure" type="weight" class="chart"></chart>
+                                    </div><!-- /.widget-main -->
+                                </div><!-- /.widget-body -->
+                            </div><!-- /.widget-box -->
+                        </div><!-- /.col -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="space-12"></div>
+        <div class="col-sm-12">
+            <div class="widget-box transparent">
+                <div class="widget-header widget-header-flat">
+                    <h3 class="widget-title lighter">
+                        Performance según raza
+                    </h3>
+                </div>
+                <div class="row">
+                    <div class="space-6"></div>
+                    <div class="col-sm-6">
+                        <div class="widget-box transparent">
+                            <div class="widget-header widget-header-flat">
+                                <h4 class="widget-title lighter">
+                                    Ganancia diaria
+                                </h4>
+                            </div>
+
+                            <div class="widget-body">
+                                <div class="widget-main padding-4">
+                                    <chart model="vm.breedWeightGainData" measures="vm.measures" measure="vm.measure" type="weightGain" class="chart"></chart>
+                                </div><!-- /.widget-main -->
+                            </div><!-- /.widget-body -->
+                        </div><!-- /.widget-box -->
+                    </div><!-- /.col -->
+                    <div class="col-sm-6">
+                        <div class="widget-box transparent">
+                            <div class="widget-header widget-header-flat">
+                                <h4 class="widget-title lighter">
+                                    Peso promedio
+                                </h4>
+                            </div>
+
+                            <div class="widget-body">
+                                <div class="widget-main padding-4">
+                                    <chart model="vm.breedWeightData" measures="vm.measures" measure="vm.measure" type="weight" class="chart"></chart>
+                                </div><!-- /.widget-main -->
+                            </div><!-- /.widget-body -->
+                        </div><!-- /.widget-box -->
+                    </div><!-- /.col -->
+                </div>
+                <div class="row">
+                    <div class="space-12"></div>
+                    <div class="col-sm-12">
+                        <div class="widget-box transparent">
+                            <div class="widget-header widget-header-flat">
+                                <h3 class="widget-title lighter">
+                                    Performance según categoría
+                                </h3>
+                            </div>
+                            <div class="row">
+                                <div class="space-6"></div>
+                                <div class="col-sm-6">
+                                    <div class="widget-box transparent">
+                                        <div class="widget-header widget-header-flat">
+                                            <h4 class="widget-title lighter">
+                                                Ganancia diaria
+                                            </h4>
+                                        </div>
+
+                                        <div class="widget-body">
+                                            <div class="widget-main padding-4">
+                                                <chart model="vm.categoryWeightGainData" measures="vm.measures" measure="vm.measure" type="weightGain" class="chart"></chart>
+                                            </div><!-- /.widget-main -->
+                                        </div><!-- /.widget-body -->
+                                    </div><!-- /.widget-box -->
+                                </div><!-- /.col -->
+
+                                <div class="col-sm-6">
+                                    <div class="widget-box transparent">
+                                        <div class="widget-header widget-header-flat">
+                                            <h4 class="widget-title lighter">
+                                                Peso promedio
+                                            </h4>
+                                        </div>
+
+                                        <div class="widget-body">
+                                            <div class="widget-main padding-4">
+                                                <chart model="vm.categoryWeightData" measures="vm.measures" measure="vm.measure" type="weight" class="chart"></chart>
+                                            </div><!-- /.widget-main -->
+                                        </div><!-- /.widget-body -->
+                                    </div><!-- /.widget-box -->
+                                </div><!-- /.col -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

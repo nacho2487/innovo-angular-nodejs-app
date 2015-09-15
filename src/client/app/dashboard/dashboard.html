@@ -1,0 +1,397 @@
+﻿<div class="page-header">
+    <h1>
+        Invernada 2014
+    </h1>
+</div><!-- /.page-header -->
+<div class="row">
+    <div class="col-xs-12">
+        <div class="row">
+            <div class="space-6"></div>
+            <div class="col-sm-6">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h4> Lote</h4>
+                    </div>
+                    <div class="col-sm-5">
+                        <select class="form-control" id="form-field-select-1" ng-change="vm.changeMeasures(vm.batch)" ng-model="vm.batch" ng-options="batch.name for batch in vm.batches">
+                            <option style="display:none" value="">Seleccione lote</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="space-6"></div>
+                    <div class="col-sm-6">
+                        <h4>Número de medida</h4>
+                    </div>
+                    <div class="col-sm-5">
+                        <select class="form-control" id="form-field-select-1" ng-change="vm.changeMeasure(vm.measure)" ng-model="vm.measure" ng-options="measure.name for measure in vm.measures">
+                            <option style="display:none" value="">Seleccione sesión</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="space-6"></div>
+                    <div class="col-sm-6">
+                        <h4>Fecha de registro</h4>
+                    </div>
+                    <div class="col-sm-5">
+                        <p class="lead data-value">{{ vm.measure.date | dateFormat }}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="space-6"></div>
+                    <div class="col-sm-6">
+                        <h4>Animales registrados</h4>
+                    </div>
+                    <div class="col-sm-5">
+                        <div class="lead data-value">{{ vm.measure.animals.length }}</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="space-6"></div>
+                    <div class="col-sm-6">
+                        <h4>Base alimenticia</h4>
+                    </div>
+                    <div class="col-sm-5">
+                        <div class="lead data-value">{{ vm.batch.foodSource }}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-5">
+                <div class="widget-box">
+                    <div class="widget-header widget-header-flat widget-header-small">
+                        <h5 class="widget-title">
+                            <i class="ace-icon fa fa-signal"></i>
+                            Distribución del lote
+                        </h5>
+
+                        <div class="widget-toolbar no-border">
+                            <div class="inline dropdown-hover">
+                                <button class="btn btn-minier btn-primary">
+                                    {{ vm.selectedType }}
+                                    <i class="ace-icon fa fa-angle-down icon-on-right bigger-110"></i>
+                                </button>
+
+                                <ul class="dropdown-menu dropdown-menu-right dropdown-125 dropdown-lighter dropdown-close dropdown-caret">
+                                    <li ng-repeat="pie in vm.pies" ng-class="{'active': pie.title == vm.selectedType}">
+                                        <a ng-click="vm.changePieChart(pie, $event)" ng-class="{'blue': pie.title == vm.selectedType}" href="#">
+                                            <i ng-class="{'invisible': pie.title != vm.selectedType} " class="ace-icon fa fa-caret-right bigger-110">&nbsp;</i>
+                                            {{ pie.title }}
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="widget-body">
+                        <div class="widget-main">
+                            <piechart ng-model="vm.piedata" style="display: block; width: 90%; height: 220px"></piechart>
+                            <div class="hr hr8 hr-double"></div>
+                            <div class="clearfix">
+                                <div ng-repeat="type in vm.types" class="grid3">
+                                    <span class="grey">
+                                        {{ type.name }}
+                                    </span>
+                                    <h4 class="bigger pull-right">{{ type.count }}</h4>
+                                </div>
+                            </div>
+
+                        </div><!-- /.widget-main -->
+                    </div><!-- /.widget-body -->
+                </div><!-- /.widget-box -->
+            </div><!-- /.col -->
+        </div>
+        <div class="row">
+            <div class="space-12"></div>
+            <div class="col-sm-12">
+                <div class="widget-box transparent">
+                    <div class="widget-body">
+
+                        <div class="row">
+                            <div class="col-sm-3">
+
+                                <div class="row infobox">
+                                    <h5>Ganancia diaria promedio</h5>
+                                    <p class="lead data-value">{{ vm.measure.averageWeightGain }} kg/d</p>
+                                    <div class="stat" ng-class="{'stat-important': vm.percentageExpectedWeightGain < 0, 'stat-success': vm.percentageExpectedWeightGain > 0}" tooltip-placement="top" tooltip-html-unsafe="Esperado <br> {{measure.averageWeightGainExpected }} kg/d">{{percentageExpectedWeightGain}}%</div>
+                                </div>
+                                <div class="row infobox">
+                                    <h5>Peso promedio</h5>
+                                    <p class="lead data-value">{{ vm.measure.averageWeight }} kg</p>
+                                    <div class="stat" ng-class="{'stat-important': vm.percentageExpectedWeight < 0, 'stat-success': vm.percentageExpectedWeight > 0}" tooltip-placement="top" tooltip-html-unsafe="Esperado <br> {{measure.averageWeightExpected }} kg">
+                                        {{vm.percentageExpectedWeight}}%
+                                        <div class='tooltip top in hide'><div class='tooltip-inner'></div></div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="row infobox">
+                                    <h5>Carga de periódo</h5>
+                                    <p class="lead data-value">{{ vm.measure.periodCharge }} animal/há</p>
+                                </div>
+                                <div class="row infobox">
+                                    <h5>Producción de carne del periódo</h5>
+                                    <p class="lead data-value">{{ vm.measure.periodProductionMeet }} kg/há</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="space-12"></div>
+                            <div class="col-sm-12">
+                                <div class="widget-box transparent">
+                                    <div class="widget-header widget-header-flat">
+                                        <h2 class="widget-title lighter">
+                                            Performance general del rodeo
+                                        </h2>
+
+                                        <div class="widget-toolbar">
+                                            <a href="#" data-action="collapse">
+                                                <i class="ace-icon fa fa-chevron-up"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="widget-body">
+                                        <div class="row">
+                                            <div class="space-12"></div>
+                                            <div class="col-sm-6">
+                                                <div class="widget-box transparent">
+                                                    <div class="widget-header widget-header-flat">
+                                                        <h3 class="widget-title lighter">
+                                                            Ganancia diaria promedio
+                                                        </h3>
+                                                    </div>
+
+                                                    <div class="widget-body">
+                                                        <div class="widget-main padding-4">
+                                                            <chart model="vm.weightGainAverageData" measures="vm.measures" measure="vm.measure" type="weightGain" class="chart"></chart>
+                                                        </div><!-- /.widget-main -->
+                                                    </div><!-- /.widget-body -->
+                                                </div><!-- /.widget-box -->
+                                            </div><!-- /.col -->
+                                            <div class="col-sm-6">
+                                                <div class="widget-box transparent">
+                                                    <div class="widget-header widget-header-flat">
+                                                        <h3 class="widget-title lighter">
+                                                            Peso promedio
+                                                        </h3>
+                                                    </div>
+
+                                                    <div class="widget-body">
+                                                        <div class="widget-main padding-4">
+                                                            <chart model="vm.weightAverageData" measures="vm.measures" measure="vm.measure" type="weight" class="chart"></chart>
+                                                        </div><!-- /.widget-main -->
+                                                    </div><!-- /.widget-body -->
+                                                </div><!-- /.widget-box -->
+                                            </div><!-- /.col -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="space-12"></div>
+            <div class="col-sm-12">
+                <div class="widget-box transparent">
+                    <div class="widget-header widget-header-flat">
+                        <h2 class="widget-title lighter">
+                            Performance del lote según raza y categoría
+                        </h2>
+
+                        <div class="widget-toolbar">
+                            <a href="#" data-action="collapse">
+                                <i class="ace-icon fa fa-chevron-up"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="widget-body">
+                        <div class="row">
+                            <div class="space-6"></div>
+                            <div class="col-sm-6">
+                                <div class="widget-box transparent">
+                                    <div class="widget-header widget-header-flat">
+                                        <h4 class="widget-title lighter">
+                                            Ganancia diaria según raza
+                                        </h4>
+                                    </div>
+
+                                    <div class="widget-body">
+                                        <div class="widget-main padding-4">
+                                            <chart model="vm.breedWeightGainData" measures="vm.measures" measure="vm.measure" type="weightGain" class="chart"></chart>
+                                        </div><!-- /.widget-main -->
+                                    </div><!-- /.widget-body -->
+                                </div><!-- /.widget-box -->
+                            </div><!-- /.col -->
+                            <div class="col-sm-6">
+                                <div class="widget-box transparent">
+                                    <div class="widget-header widget-header-flat">
+                                        <h4 class="widget-title lighter">
+                                            Peso promedio según raza
+                                        </h4>
+                                    </div>
+
+                                    <div class="widget-body">
+                                        <div class="widget-main padding-4">
+                                            <chart model="vm.breedWeightData" measures="vm.measures" measure="vm.measure" type="weight" class="chart"></chart>
+                                        </div><!-- /.widget-main -->
+                                    </div><!-- /.widget-body -->
+                                </div><!-- /.widget-box -->
+                            </div><!-- /.col -->
+                        </div>
+                        <div class="row">
+                            <div class="space-6"></div>
+                            <div class="col-sm-6">
+                                <div class="widget-box transparent">
+                                    <div class="widget-header widget-header-flat">
+                                        <h4 class="widget-title lighter">
+                                            Ganancia diaria según categoría
+                                        </h4>
+                                    </div>
+
+                                    <div class="widget-body">
+                                        <div class="widget-main padding-4">
+                                            <chart model="vm.categoryWeightGainData" measures="vm.measures" measure="vm.measure" type="weightGain" class="chart"></chart>
+                                        </div><!-- /.widget-main -->
+                                    </div><!-- /.widget-body -->
+                                </div><!-- /.widget-box -->
+                            </div><!-- /.col -->
+                            <div class="col-sm-6">
+                                <div class="widget-box transparent">
+                                    <div class="widget-header widget-header-flat">
+                                        <h4 class="widget-title lighter">
+                                            Peso promedio según categoría
+                                        </h4>
+                                    </div>
+
+                                    <div class="widget-body">
+                                        <div class="widget-main padding-4">
+                                            <chart model="vm.categoryWeightData" measures="vm.measures" measure="vm.measure" type="weight" class="chart"></chart>
+                                        </div><!-- /.widget-main -->
+                                    </div><!-- /.widget-body -->
+                                </div><!-- /.widget-box -->
+                            </div><!-- /.col -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="space-12"></div>
+            <div class="col-sm-12">
+                <div class="widget-box transparent">
+                    <div class="widget-header widget-header-flat">
+                        <h2 class="widget-title lighter">
+                            Balance sanitario
+                        </h2>
+
+                        <div class="widget-toolbar">
+                            <a href="#" data-action="collapse">
+                                <i class="ace-icon fa fa-chevron-up"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="widget-body">
+                        <div class="row" ng-show="vm.measure.treatments.length == 0">
+                            <div class="space-12"></div>
+                            <div class="col-sm-12">
+                                <p class="lead">No se han registrado tratamientos para la medida seleccionada</p>
+                            </div>
+                        </div>
+                        <div class="row" ng-show="vm.measure.treatments.length > 0">
+                            <div class="space-12"></div>
+                            <div class="col-sm-6">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <h5>Tratamiento:</h5>
+                                    </div>
+                                    <div class="col-sm-5">
+                                        <select id="treatment" class="form-control" ng-model="vm.treatment" ng-options="treatment.name for treatment in vm.measure.treatments">
+                                            <option style="display:none" value="">Seleccione tratamiento    </option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <h5>Número de animales:</h5>
+                                    </div>
+                                    <div class="col-sm-5">
+                                        <p id="treatment-number-animal" class="lead data-value">{{vm.treatment.animals.length}}</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <h5>Fecha de tratamiento:</h5>
+                                    </div>
+                                    <div class="col-sm-5">
+                                        <p id="treatment-date" class="lead data-value">{{vm.treatment.applicantDate | dateFormat}}</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <h5>Producto:</h5>
+                                    </div>
+                                    <div class="col-sm-5">
+                                        <p id="treatment-product" class="lead data-value">{{vm.treatment.product}}</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <h5>Dosis:</h5>
+                                    </div>
+                                    <div class="col-sm-5">
+                                        <p id="treatment-dosis" class="lead data-value">{{vm.treatment.dose}}</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <h5>Tiempo de espera:</h5>
+                                    </div>
+                                    <div class="col-sm-5">
+                                        <p id="treatment-days" class="lead data-value">{{vm.treatment.waitTime}}</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <h5>Fecha de finalización:</h5>
+                                    </div>
+                                    <div class="col-sm-5">
+                                        <p id="treatment-end-date" class="lead data-value">{{vm.treatment.endDate | dateFormat}}</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row" ng-show="vm.treatment.animals.length < vm.measure.animals.length">
+                            <div class="space-12"></div>
+                            <div class="col-sm-6">
+
+                            </div>
+                            <div class="col-sm-6">
+                                <table id="sample-table-2" class="table table-striped table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Animales con la aplicación</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="animal in vm.treatment.animals">
+                                            <td><a href="#/animales/{{animal.animalId}}">{{animal.identification}}</a></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,25 @@
+﻿<div data-ng-controller="batchTopnav as vm">
+    <ul class="nav nav-tabs">
+        <li ng-class="{'active':vm.isActive('/lotes/{{vm.batchId}}/detalles')}">
+            <a href="#/lotes/{{vm.batchId}}/detalles">
+                Detalles
+            </a>
+        </li>
+
+        <li ng-class="{'active':vm.isActive('/lotes/{{vm.batchId}}/performance')}">
+            <a href="#/lotes/{{vm.batchId}}/performance">
+                Performance
+            </a>
+        </li>
+        <li ng-class="{'active': vm.isActive('/lotes/{{vm.batchId}}/balance-sanitario')}">
+            <a href="#/lotes/{{vm.batchId}}/balance-sanitario">
+                Balance sanitario
+            </a>
+        </li>
+        <li ng-class="{'active':vm.isActive('/lotes/{{vm.batchId}}/animales')}">
+            <a href="#/lotes/{{vm.batchId}}/animales">
+                Animales
+            </a>
+        </li>
+    </ul>
+</div>

@@ -1,0 +1,30 @@
+﻿<div class="page-header">
+    <h1>
+        Lote 1
+    </h1>
+</div><!-- /.page-header -->
+<div class="row">
+    <div class="col-sm-12">
+        <div class="tabbable">
+            <div data-ng-include="'app/batch/batch-topnav.html'"></div>
+            <div class="tab-content">
+                <div class="tab-pane fade in active">
+                    <ng-switch on="vm.batchType">
+                        <div ng-switch-when="detalles">
+                            <div data-ng-include="'app/batch/batch-detail.html'"></div>
+                        </div>
+                        <div ng-switch-when="performance">
+                            <div data-ng-include="'app/batch/batch-performance.html'"></div>
+                        </div>
+                        <div ng-switch-when="balance-sanitario">
+                            <div data-ng-include="'app/batch/batch-treatments.html'"></div>
+                        </div>
+                        <div ng-switch-when="animales">
+                            <div data-ng-include="'app/batch/batch-animals.html'"></div>
+                        </div>
+                    </ng-switch>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

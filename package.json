@@ -1,0 +1,29 @@
+{
+  "name": "Innovo",
+  "version": "0.0.1",
+  "description": "Innovo",
+  "authors": [
+    "Ignacio Olaizola"
+  ],
+  "license": "",
+  "homepage": "https://github.com/nacho2487/innovo",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nacho2487/innovo.git"
+  },
+  "scripts": {
+    "init": "npm install",
+    "install": "bower install",
+    "start": "node src/server/app.js",
+    "test": "gulp test"
+  },
+  "dependencies": {
+    "body-parser": "^1.8.2",
+    "compression": "^1.1.0",
+    "cors": "^2.2.0",
+    "express": "^4.9.3",
+    "method-override": "^1.0.0",
+    "morgan": "^1.1.1",
+    "serve-favicon": "^2.0.1"
+  }
+}

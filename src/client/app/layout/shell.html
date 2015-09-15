@@ -1,0 +1,105 @@
+﻿<div ng-controller="shell as vm">
+    <div id="navbar" class="navbar navbar-default">
+        <script type="text/javascript">
+            try { ace.settings.check('navbar', 'fixed') } catch (e) { }
+        </script>
+        <div class="navbar-container" id="navbar-container">
+            <button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler">
+                <span class="sr-only">Toggle sidebar</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <div class="navbar-header pull-left">
+                <a href="#" class="navbar-brand">
+                    <small>
+                        <i class="fa fa-leaf"></i>
+                        Innovo
+                    </small>
+                </a>
+            </div>
+        </div>
+        <div class="navbar-buttons navbar-header pull-right" role="navigation">
+            <ul class="nav ace-nav">
+                <!-- #section:basics/navbar.user_menu -->
+                <li class="light-blue">
+                    <a data-toggle="dropdown" data-target="#dropdown-user" class="dropdown-toggle">
+                        <span class="user-info">
+                            <small>Bienvenido,</small>
+                            Alejandro
+                        </span>
+
+                        <i class="ace-icon fa fa-caret-down"></i>
+                    </a>
+                    <div id="dropdown-user">
+                        <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+                            <li>
+                                <a href="#">
+                                    <i class="ace-icon fa fa-cog"></i>
+                                    Configuración
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#">
+                                    <i class="ace-icon fa fa-user"></i>
+                                    Perfil
+                                </a>
+                            </li>
+
+                            <li class="divider"></li>
+
+                            <li>
+                                <a href="#/cerrar-sesion">
+                                    <i class="ace-icon fa fa-power-off"></i>
+                                    Cerrar sesión
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+                <!-- /section:basics/navbar.user_menu -->
+            </ul>
+        </div>
+    </div>
+        <div class="main-container" id="main-container">
+            <script type="text/javascript">
+                try { ace.settings.check('main-container', 'fixed') } catch (e) { }
+            </script>
+            <div id="sidebar" class="sidebar                  responsive">
+                <script type="text/javascript">
+                    try { ace.settings.check('sidebar', 'fixed') } catch (e) { }
+                </script>
+                <div data-ng-include="'app/layout/sidebar.html'"></div>
+                <script type="text/javascript">
+                    try { ace.settings.check('sidebar', 'collapsed') } catch (e) { }
+                </script>
+            </div>
+            <div class="main-content">
+                <div class="page-content">
+                    <!--<div data-ng-show="vm.isBusy" class="page-splash dissolve-animation">
+                        <div data-cc-spinner="vm.spinnerOptions"></div>
+                        <div class="page-splash-message page-splash-message-subtle">{{vm.busyMessage}}</div>
+                    </div>-->
+                    <div ng-view class="shuffle-animation"></div>
+                </div>
+            </div>
+            <div class="footer">
+                <div class="footer-inner">
+
+                </div>
+            </div>
+            <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+                <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+            </a>
+        </div>
+        <!--<div class="modal-overlay" ng-show="vm.loading">
+            <div class="modal-body">
+                <div class="loading"></div>
+                <div class="message">Cargando...</div>
+            </div>
+        </div>
+        <div class="overlay" ng-show="vm.loading">
+        </div>-->
+    </div>

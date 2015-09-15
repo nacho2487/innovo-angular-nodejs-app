@@ -1,0 +1,133 @@
+﻿<div ng-controller="BatchDetail as vm">
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="row">
+                <div class="space-6"></div>
+                <div class="col-sm-6">
+                    <h4>Cantidad de animales</h4>
+                </div>
+                <div class="col-sm-5">
+                    <div class="lead data-value">350</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="space-6"></div>
+                <div class="col-sm-6">
+                    <h4>Potrero</h4>
+                </div>
+                <div class="col-sm-5">
+                    <div class="lead data-value"><a href="#/potreros/1/detalles">Potrero 1</a></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="space-6"></div>
+                <div class="col-sm-6">
+                    <h4>Categorias</h4>
+                </div>
+                <div class="col-sm-5">
+                    <div class="lead data-value">
+                        <ul class="list-unstyled">
+                            <li><i class="ace-icon fa fa-caret-right blue"></i>Vaquillonas 1-2</li>
+                            <li><i class="ace-icon fa fa-caret-right blue"></i>Novillos 1-2</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="space-6"></div>
+                <div class="col-sm-6">
+                    <h4>Razas</h4>
+                </div>
+                <div class="col-sm-5">
+                    <div class="lead data-value">
+                        <ul class="list-unstyled">
+                            <li><i class="ace-icon fa fa-caret-right blue"></i>Hereford</li>
+                            <li><i class="ace-icon fa fa-caret-right blue"></i>Angus</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="row">
+                <div class="space-6"></div>
+                <div class="col-sm-6">
+                    <h4>Fecha de medida</h4>
+                </div>
+                <div class="col-sm-5">
+                    <div class="lead data-value">01/06/2015</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="space-6"></div>
+                <div class="col-sm-6">
+                    <h4>Ganancia diaria promedio</h4>
+                </div>
+                <div class="col-sm-5">
+                    <div class="lead data-value">0.5 kg/d</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="space-6"></div>
+                <div class="col-sm-6">
+                    <h4>Peso promedio</h4>
+                </div>
+                <div class="col-sm-5">
+                    <div class="lead data-value">350 kg</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="space-6"></div>
+                <div class="col-sm-6">
+                    <h4>Carga de periódo</h4>
+                </div>
+                <div class="col-sm-5">
+                    <div class="lead data-value">1.3 animal/hectarea</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="space-6"></div>
+                <div class="col-sm-6">
+                    <h4>Producción de carne del periódo</h4>
+                </div>
+                <div class="col-sm-5">
+                    <div class="lead data-value">350 kg</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="space-12"></div>
+        <div class="col-sm-6">
+            <div class="widget-box transparent">
+                <div class="widget-header widget-header-flat">
+                    <h3 class="widget-title lighter">
+                        Raza
+                    </h3>
+                </div>
+
+                <div class="widget-body">
+                    <div class="widget-main padding-4">
+                        <piechart ng-model="vm.breedsPieData" style="display: block; width: 90%; height: 220px"></piechart>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="widget-box transparent">
+                <div class="widget-header widget-header-flat">
+                    <h3 class="widget-title lighter">
+                        Categoría
+                    </h3>
+                </div>
+
+                <div class="widget-body">
+                    <div class="widget-main padding-4">
+                        <piechart ng-model="vm.categoriesPieData" style="display: block; width: 90%; height: 220px"></piechart>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
