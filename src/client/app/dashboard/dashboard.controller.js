@@ -2,9 +2,10 @@
     'use strict';
     angular
         .module('app.dashboard')
-        .controller(Dashboard);
-    Dashboard.$inject = ['common', 'commonConfig', 'batchcontext'];
-    function Dashboard(common, commonConfig, batchcontext) {
+        .controller('Dashboard', Dashboard);
+    Dashboard.$inject = ['common', 'commonConfig', 'batchcontext', 'charts'];
+
+    function Dashboard(common, commonConfig, batchcontext, charts) {
         var vm = this;
         vm.batch = {};
         vm.batches = [];
@@ -62,22 +63,27 @@
         }
 
         function loadMeasure() {
-            // vm.pies[0].data = PieChartData(vm.measure, 'breeds');
-            // vm.pies[0].types = PieCountData(vm.measure, 'breeds');
-            // vm.pies[1].data = PieChartData(vm.measure, 'categories');
-            // vm.pies[1].types = PieCountData(vm.measure, 'categories');
-            // vm.piedata = PieChartData(vm.measure, 'breeds');
-            // vm.types = PieCountData(vm.measure, 'breeds');
-            // vm.weightGainAverageData = BarChartData(vm.measures, vm.measure, 'averageWeightGain', 'averageWeightGainExpected');
-            // vm.weightAverageData = BarChartData(vm.measures, vm.measure, 'averageWeight', 'averageWeightExpected');
-            // vm.breedWeightGainData = LinesChartData(vm.measures, vm.measure, 'breeds', 'weightGain', 'averageWeightGain');
-            // vm.breedWeightData = LinesChartData(vm.measures, vm.measure, 'breeds', 'weight', 'averageWeight');
-            // vm.categoryWeightGainData = LinesChartData(vm.measures, vm.measure, 'categories', 'weightGain', 'averageWeightGain');
-            // vm.categoryWeightData = LinesChartData(vm.measures, vm.measure, 'categories', 'weight', 'averageWeight');
-            // vm.percentageExpectedWeightGain = PercentageExpected(vm.measure.averageWeightGain, vm.measure.averageWeightGainExpected);
-            // vm.percentageExpectedWeight = PercentageExpected(vm.measure.averageWeight, vm.measure.averageWeightExpected);
+            vm.pies[0].data = charts.getPieData(vm.measure, 'breeds');
+            vm.pies[0].types = charts.getPieCount(vm.measure, 'breeds');
+            vm.pies[1].data = charts.getPieData(vm.measure, 'categories');
+            vm.pies[1].types = charts.getPieCount(vm.measure, 'categories');
+            vm.piedata = charts.getPieData(vm.measure, 'breeds');
+            vm.types = charts.getPieCount(vm.measure, 'breeds');
+            vm.weightGainAverageData = charts.getBarsData(vm.measures, vm.measure, 'averageWeightGain', 'averageWeightGainExpected');
+            vm.weightAverageData = charts.getBarsData(vm.measures, vm.measure, 'averageWeight', 'averageWeightExpected');
+            vm.breedWeightGainData = charts.getLinesData(vm.measures, vm.measure, 'breeds', 'weightGain', 'averageWeightGain');
+            vm.breedWeightData = charts.getLinesData(vm.measures, vm.measure, 'breeds', 'weight', 'averageWeight');
+            vm.categoryWeightGainData = charts.getLinesData(vm.measures, vm.measure, 'categories', 'weightGain', 'averageWeightGain');
+            vm.categoryWeightData = charts.getLinesData(vm.measures, vm.measure, 'categories', 'weight', 'averageWeight');
+            vm.percentageExpectedWeightGain = percentageExpected(vm.measure.averageWeightGain, vm.measure.averageWeightGainExpected);
+            vm.percentageExpectedWeight = percentageExpected(vm.measure.averageWeight, vm.measure.averageWeightExpected);
             vm.treatment = vm.measure.treatments[0];
         }
     };
+
+    function percentageExpected(actual, expected) {
+        var percent = actual > 0 ? ((actual - expected) / actual) * 100 : 0;
+        return Math.round(percent);
+    }
 
 })();

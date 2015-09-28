@@ -1,10 +1,12 @@
-(function() {
+(function () {
     'use strict';
-     angular
-            .module('app.widgets')
-            .directive('inChart', inChart);
+    angular
+        .module('app.widgets')
+        .directive('inChart', inChart);
 
-    function inChart() {
+    inChart.$inject = ['charts', '$window'];
+
+    function inChart(charts, $window) {
         return {
             restrict: 'E',
             scope: {
@@ -106,5 +108,19 @@
 
             }
         };
+
+
+        function GetMeasuresDates(measures, actualMeasure) {
+
+            var dates = measures.filter(function (measure) {
+                var measureAuxDate = charts.getJsonTime(measure.date);
+                var measureDate = charts.getJsonTime(actualMeasure.date);
+                return measureAuxDate <= measureDate;
+            }).map(function (v) {
+                return charts.getJsonTime(v.date);
+            });
+
+            return dates;
+        }
     }
-});
+})();

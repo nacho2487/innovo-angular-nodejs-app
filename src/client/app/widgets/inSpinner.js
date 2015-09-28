@@ -1,8 +1,7 @@
 ﻿(function () {
     'use strict';
-
-    var app = angular.module('app');
-    app.directive('ccSpinner', ['$window', function ($window) {
+    angular.module('app.widgets')
+    .directive('inSpinner', ['$window', function ($window) {
         // Description:
         //  Creates a new Spinner and sets its options
         // Usage:
@@ -24,20 +23,4 @@
             }, true);
         }
     }]);
-
-    app.directive('loginDialog', function(AUTH_EVENTS) {
-        return {
-            restrict: 'A',
-            template: '<div ng-if="visible" ng-include="\'client/app/authentication/login.html\'">',
-            link: function(scope) {
-                var showDialog = function() {
-                    scope.visible = true;
-                };
-
-                scope.visible = false;
-                scope.$on(AUTH_EVENTS.notAuthenticated, showDialog);
-                scope.$on(AUTH_EVENTS.sessionTimeout, showDialog)
-            }
-        };
-    });
 })();

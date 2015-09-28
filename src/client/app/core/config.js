@@ -3,11 +3,16 @@
 
     var core = angular.module('app.core');
 
-    
+    var events = {
+        controllerActivateSuccess: 'controller.activateSuccess',
+        spinnerToggle: 'spinner.toggle'
+    };
 
-    var config = {
-        appErrorPrefix: '[CC Error] ', //Configure the exceptionHandler decorator
-        version: '1.1.0'
+    var config = {        
+        appErrorPrefix: '[HT Error] ', //Configure the exceptionHandler decorator
+        docTitle: 'Innovo: ',
+        events: events,
+        version: '1.0.0'
     };
 
     core.constant('config', config);
@@ -28,15 +33,7 @@
         function configureRouting() {
             var routeCfg = routehelperConfigProvider;
             routeCfg.config.$routeProvider = $routeProvider;
-            routeCfg.config.docTitle = 'CC: ';
-            routeCfg.config.resolveAlways = { /* @ngInject */
-                ready: function(datacontext) {
-                    return datacontext.ready();
-                }
-//                ready: ['datacontext', function (datacontext) {
-//                    return datacontext.ready();
-//                }]
-            };
+            routeCfg.config.docTitle = 'Innovo - ';
         }
     }
 })();

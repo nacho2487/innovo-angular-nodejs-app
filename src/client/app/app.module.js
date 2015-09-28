@@ -16,6 +16,7 @@
          * but this is easier to maintain.
          */ 
         'app.core',
+        'app.services',
         'app.widgets',
         'blocks.router',
         /*

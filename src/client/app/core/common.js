@@ -6,7 +6,7 @@
     //  - common
     //  - logger
     //  - spinner
-    var commonModule = angular.module('app.core', []);
+    var commonModule = angular.module('app.core');
 
     // Must configure the common service and set its 
     // events via the commonConfigProvider

@@ -41,6 +41,14 @@
     <script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="/bower_components/toastr/toastr.js"></script>
     <script src="/bower_components/moment/moment.js"></script>
+    <script src="/bower_components/Flot/jquery.flot.js"></script>
+    <script src="/bower_components/Flot/jquery.flot.time.js"></script>
+    <script src="/bower_components/Flot/jquery.flot.pie.js"></script>
+    <script src="/bower_components/Flot/jquery.flot.axislabels.js"></script>
+    <script src="/bower_components/Flot/jquery.flot.barnumbers.js"></script>
+    <script src="/bower_components/Flot/jquery.flot.orderBar.js"></script>
+    <script src="/bower_components/Flot/jquery.flot.tooltip.js"></script>
+    <script src="/bower_components/Flot/jquery-flot-dashes.js"></script>
     <!-- endinject -->
 
     <!-- inject:js -->
@@ -51,6 +59,8 @@
     <script src="app/blocks/routes/routehelper.js"></script>
  
     <!-- App - Core -->
+    
+    <script src="app/core/core.module.js"></script>
     <script src="app/core/common.js"></script>
     <script src="app/core/constants.js"></script>
     <script src="app/core/spinner.js"></script>
@@ -60,15 +70,18 @@
     
    
    <!-- App - Services -->
+    <script src="app/services/services.module.js"></script>
     <script src="app/services/animalcontext.js"></script>
     <script src="app/services/batchcontext.js"></script>
-    <script src="app/services/directives.js"></script>
+    <script src="app/services/charts.service.js"></script>
     
    
     <!--widgets-->
     <script src="app/widgets/widgets.module.js"></script>
     <script src="app/widgets/inChart.js"></script>
     <script src="app/widgets/inPieChart.js"></script>
+    <script src="app/widgets/inSpinner.js"></script>
+    
 
     <!-- App - Layout -->
     <script src="app/layout/layout.module.js"></script> 

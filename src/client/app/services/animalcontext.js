@@ -1,8 +1,10 @@
 ﻿(function () {
     'use strict';
 
-    var serviceId = 'animalcontext';
-    angular.module('app').factory(serviceId, ['$http', 'common', animalcontext]);
+    angular.module('app.services').factory('animalcontext', animalcontext);
+
+    animalcontext.$inject = ['$http', 'common'];
+
 
     function animalcontext($http, common) {
         var $q = common.$q;

@@ -1,8 +1,9 @@
 ﻿(function () {
     'use strict';
 
-    var serviceId = 'batchcontext';
-    angular.module('app').factory(serviceId, ['$http', 'common', batchcontext]);
+    angular.module('app.services').factory('batchcontext', batchcontext);
+    batchcontext.$inject = ['$http', 'common'];
+
 
     function batchcontext($http, common) {
         var $q = common.$q;

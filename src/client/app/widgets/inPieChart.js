@@ -4,7 +4,9 @@
             .module('app.widgets')
             .directive('inPieChart', inPieChart);
 
-    function inPieChart() {
+    inPieChart.$inject = ['$window'];
+
+    function inPieChart($window) {
         return {
             restrict: 'E',
             link: function (scope, elem, attrs) {
@@ -81,4 +83,4 @@
             }
         };
     };
-});
+})();

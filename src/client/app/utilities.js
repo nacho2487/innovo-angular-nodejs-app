@@ -126,40 +126,6 @@ function PieChartData(measure, type) {
     return data;
 }
 
-function GetMeasuresDates(measures, actualMeasure) {
-
-    var dates = _.filter(measures, function (measure) {
-        var measureAuxDate = GetJsonTime(measure.date);
-        var measureDate = GetJsonTime(actualMeasure.date);
-        return measureAuxDate <= measureDate;
-    }).map(function (v) {
-        return GetJsonTime(v.date);
-    });
-
-    return dates;
-}
-
-function PieCountData(measure, type) {
-    var animalsByType = measure[type];
-    var data = [];
-    for (var i = 0; i < animalsByType.length; i++) {
-        var animalByType = animalsByType[i];
-        data.push({
-            name: animalByType.name,
-            count: animalByType.count
-        });
-    }
-    return data;
-}
 
 
-function GetJsonTime(jsonDate) {
-    var date = moment(jsonDate);
-    return date.utc().valueOf();
 
-}
-
-function PercentageExpected(actual, expected) {
-    var percent = actual > 0 ? ((actual - expected) / actual) * 100 : 0;
-    return Math.round(percent);
-}
