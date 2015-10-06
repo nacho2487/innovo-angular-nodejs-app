@@ -1,32 +1,32 @@
 ﻿(function () {
-angular
-    .module('app.batch')
-    .controller('BatchDetail', ['$routeParams', 'spinner', 'batchcontext', BatchDetail]);
+    angular
+        .module('app.batch')
+        .controller('BatchDetail', ['$routeParams', 'spinner', 'batchcontext', 'charts', BatchDetail]);
 
-function BatchDetail($routeParams, spinner, batchcontext) {
-    var vm = this;
-    vm.measures = [];
-    vm.measure = {};
-    vm.categoriesPieData = [];
-    vm.breedsPieData = [];
+    function BatchDetail($routeParams, spinner, batchcontext, charts) {
+        var vm = this;
+        vm.measures = [];
+        vm.measure = {};
+        vm.categoriesPieData = [];
+        vm.breedsPieData = [];
 
-    activate();
+        activate();
 
-    function activate() {
-        getBatchMeasures($routeParams.batchId).then(function () {
-            vm.categoriesPieData = PieChartData(vm.measure, 'categories');
-            vm.breedsPieData = PieChartData(vm.measure, 'breeds');
-            spinner.spinnerHide();
-        });
+        function activate() {
+            getBatchMeasures($routeParams.batchId).then(function () {
+                vm.categoriesPieData = charts.getPieData(vm.measure, 'categories');
+                vm.breedsPieData = charts.getPieData(vm.measure, 'breeds');
+                spinner.spinnerHide();
+            });
+        }
+
+        function getBatchMeasures(batchId) {
+            return batchcontext.getBatchMeasures(batchId).then(function (data) {
+                vm.measures = data.data;
+                vm.measure = data.data[0];
+                return data.data;
+            });
+        }
+
     }
-
-    function getBatchMeasures(batchId) {
-        return batchcontext.getBatchMeasures(batchId).then(function (data) {
-            vm.measures = data.data;
-            vm.measure = data.data[0];
-            return data.data;
-        });
-    }
-
-}
 })();

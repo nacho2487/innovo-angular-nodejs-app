@@ -23,7 +23,7 @@
                     title: 'Animales',
                     settings: {
                         nav: 3,
-                        content: '<span class="icon-Cow"></span><span class="menu-text"> Animales</span>'
+                        content: '<span class="menu-text"> Animales</span>'
                     }
                 }
             },

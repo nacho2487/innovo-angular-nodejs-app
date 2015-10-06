@@ -1,22 +1,20 @@
 ﻿(function () {
-angular
-    .module('app.batch')
-    .controller('BatchAnimals', BatchAnimals);
+    angular
+        .module('app.batch')
+        .controller('BatchAnimals', BatchAnimals);
+    BatchAnimals.$inject = ['animalcontext'];
+    function BatchAnimals(animalcontext) {
+        var vm = this;
+        activate();
+        function activate() {
+            getAnimals();
 
-function BatchAnimals(spinner, animalcontext) {
-    var vm = this;
-    activate();
-    function activate() {
-        getAnimals().then(function () {
-            spinner.spinnerHide();
-        });
+        }
 
+        function getAnimals() {
+            return animalcontext.getAllAnimals().then(function (data) {
+                return vm.animals = data.data;
+            });
+        }
     }
-
-    function getAnimals() {
-        return animalcontext.getAllAnimals().then(function (data) {
-            return vm.animals = data.data;
-        });
-    }
-}
 })();

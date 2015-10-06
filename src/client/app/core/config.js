@@ -10,7 +10,7 @@
 
     var config = {        
         appErrorPrefix: '[HT Error] ', //Configure the exceptionHandler decorator
-        docTitle: 'Innovo: ',
+        docTitle: 'Innovo - ',
         events: events,
         version: '1.0.0'
     };
@@ -33,7 +33,7 @@
         function configureRouting() {
             var routeCfg = routehelperConfigProvider;
             routeCfg.config.$routeProvider = $routeProvider;
-            routeCfg.config.docTitle = 'Innovo - ';
+            routeCfg.config.docTitle = config.docTitle;
         }
     }
 })();

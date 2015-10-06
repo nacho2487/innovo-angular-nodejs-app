@@ -1,7 +1,12 @@
-﻿angular
-    .module('app.batch')
-    .controller('BatchTreatments', BatchTreatments);
+﻿(function () {
+    'use strict';
 
-function BatchTreatments(spinner) {
-    spinner.spinnerHide();
-}
+    angular
+        .module('app.batch')
+        .controller('BatchTreatments', BatchTreatments);
+
+    function BatchTreatments() {
+
+    }
+
+})();

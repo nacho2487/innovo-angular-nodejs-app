@@ -22,7 +22,7 @@
                     title: 'Potreros',
                     settings: {
                         nav: 2,
-                        content: '<span class="icon-pasture"></span><span class="menu-text"> Potreros</span>'
+                        content: '</span><span class="menu-text"> Potreros</span>'
                     }
                 }
             },

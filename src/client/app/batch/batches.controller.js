@@ -2,16 +2,16 @@
     'use strict';
     angular
         .module('app.batch')
-    .controller('Batches', ['common', 'commonConfig', 'batchcontext', Batches]);
+    .controller('Batches', ['common', 'commonConfig', 'batchcontext', 'charts', Batches]);
 
-    function Batches(common, commonConfig, batchcontext) {
+    function Batches(common, commonConfig, batchcontext, charts) {
         var vm = this;
         vm.isCurrent = isCurrent;
         activate();
 
         function activate() {
             getBatches().then(function () {
-                //vm.piedata = PieChartData(vm.measure, 'categories');
+                vm.piedata = charts.getPieData(vm.measure, 'categories');
                 common.$broadcast(commonConfig.config.controllerActivateSuccessEvent, { controllerId: 'Batches' })
             });
         }

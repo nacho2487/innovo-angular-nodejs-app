@@ -22,7 +22,7 @@
                     title: 'Lotes',
                     settings: {
                         nav: 1,
-                        content: '<i class="fa fa-dashboard"></i><span class="menu-text"> Lotes</span>'
+                        content: '<span class="menu-text"> Lotes</span>'
                     }
                 }
             },

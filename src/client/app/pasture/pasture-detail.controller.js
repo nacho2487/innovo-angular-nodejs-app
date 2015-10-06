@@ -1,7 +1,8 @@
-﻿angular
-    .module('app.pasture')
-    .controller('PastureDetail', PastureDetail);
+﻿(function () {
+    angular
+        .module('app.pasture')
+        .controller('PastureDetail', PastureDetail);
 
-function PastureDetail(spinner) {
-    spinner.spinnerHide();
-}
+    function PastureDetail() {
+    }
+})();
