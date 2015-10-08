@@ -1,4 +1,4 @@
-﻿(function () {
+﻿(function() {
     'use strict';
     angular
         .module('app.dashboard')
@@ -9,10 +9,11 @@
         var vm = this;
         vm.batch = {};
         vm.batches = [];
-        vm.pies = [
-            { title: "Raza" },
-            { title: "Categoría" }
-        ];
+        vm.pies = [{
+            title: "Raza"
+        }, {
+            title: "Categoría"
+        }];
         vm.selectedType = "Raza";
         vm.changeMeasures = changeMeasures;
         vm.changeMeasure = changeMeasure;
@@ -21,14 +22,14 @@
         activate();
 
         function activate() {
-            getBatches().then(getBatchMeasures).then(function () {
+            getBatches().then(getBatchMeasures).then(function() {
                 loadMeasure();
                 //common.$broadcast(commonConfig.config.controllerActivateSuccessEvent, { controllerId: 'Dashboard' })
             });
         }
 
         function getBatches() {
-            return batchcontext.getBatches().then(function (data) {
+            return batchcontext.getBatches().then(function(data) {
                 vm.batches = data.data;
                 vm.batch = data.data[0];
                 return data.data[0].id;
@@ -36,7 +37,7 @@
         }
 
         function getBatchMeasures(batchId) {
-            return batchcontext.getBatchMeasures(batchId).then(function (data) {
+            return batchcontext.getBatchMeasures(batchId).then(function(data) {
                 vm.measures = data.data;
                 vm.measure = data.data[0];
                 return data.data;
@@ -45,7 +46,7 @@
 
         function changeMeasures(batch) {
             vm.batch = batch;
-            batchcontext.getBatchMeasures(batch.Id).then(function (data) {
+            batchcontext.getBatchMeasures(batch.Id).then(function(data) {
                 loadMeasure();
             });
         }
@@ -79,11 +80,13 @@
             vm.percentageExpectedWeight = percentageExpected(vm.measure.averageWeight, vm.measure.averageWeightExpected);
             vm.treatment = vm.measure.treatments[0];
         }
-    };
 
-    function percentageExpected(actual, expected) {
-        var percent = actual > 0 ? ((actual - expected) / actual) * 100 : 0;
-        return Math.round(percent);
+        function percentageExpected(actual, expected) {
+            var percent = actual > 0 ? ((actual - expected) / actual) * 100 : 0;
+            return Math.round(percent);
+        }
     }
+
+
 
 })();

@@ -1,29 +1,30 @@
 {
   "name": "Innovo",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "description": "Innovo",
   "authors": [
     "Ignacio Olaizola"
   ],
   "license": "",
-  "homepage": "https://github.com/nacho2487/innovo",
+  "homepage": "https://github.com/nacho2487/innovo-angular-nodejs-app",
   "repository": {
     "type": "git",
     "url": "https://github.com/nacho2487/innovo.git"
   },
   "scripts": {
     "init": "npm install",
-    "install": "bower install",
-    "start": "node src/server/app.js",
-    "test": "gulp test"
+    "start": "node src/server/app.js"
   },
   "dependencies": {
+    "angular": "~1.4.5",
+    "angular-route": "~1.4.5",
+    "angular-sanitize": "^1.4.7",
     "body-parser": "^1.8.2",
-    "compression": "^1.1.0",
-    "cors": "^2.2.0",
+    "bootstrap": "~3.1.1",
     "express": "^4.9.3",
-    "method-override": "^1.0.0",
-    "morgan": "^1.1.1",
-    "serve-favicon": "^2.0.1"
+    "flot": "^0.8.0-alpha",
+    "font-awesome": "~4.0.3",
+    "jquery": "~2.1.0",
+    "moment": "~2.6.0"
   }
 }

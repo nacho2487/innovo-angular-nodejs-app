@@ -69,7 +69,7 @@
                             <div class="inline dropdown-hover">
                                 <button class="btn btn-minier btn-primary">
                                     {{ vm.selectedType }}
-                                    <i class="ace-icon fa fa-angle-down icon-on-right bigger-110"></i>
+                                    <i class="fa fa-angle-down"></i>
                                 </button>
 
                                 <ul class="dropdown-menu dropdown-menu-right dropdown-125 dropdown-lighter dropdown-close dropdown-caret">
@@ -115,7 +115,7 @@
                                 <div class="row infobox">
                                     <h5>Ganancia diaria promedio</h5>
                                     <p class="lead data-value">{{ vm.measure.averageWeightGain }} kg/d</p>
-                                    <div class="stat" ng-class="{'stat-important': vm.percentageExpectedWeightGain < 0, 'stat-success': vm.percentageExpectedWeightGain > 0}" tooltip-placement="top" tooltip-html-unsafe="Esperado <br> {{measure.averageWeightGainExpected }} kg/d">{{percentageExpectedWeightGain}}%</div>
+                                    <div class="stat" ng-class="{'stat-important': vm.percentageExpectedWeightGain < 0, 'stat-success': vm.percentageExpectedWeightGain > 0}" tooltip-placement="top" tooltip-html-unsafe="Esperado <br> {{measure.averageWeightGainExpected }} kg/d">{{vm.percentageExpectedWeightGain}}%</div>
                                 </div>
                                 <div class="row infobox">
                                     <h5>Peso promedio</h5>
