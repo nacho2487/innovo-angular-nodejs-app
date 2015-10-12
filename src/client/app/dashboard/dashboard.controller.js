@@ -18,9 +18,7 @@
         vm.changeMeasures = changeMeasures;
         vm.changeMeasure = changeMeasure;
         vm.changePieChart = changePieChart;
-
         activate();
-
         function activate() {
             getBatches().then(getBatchMeasures).then(function() {
                 loadMeasure();

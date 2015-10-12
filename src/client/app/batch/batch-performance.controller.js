@@ -21,7 +21,7 @@
             getBatchMeasures($routeParams.batchId).then(function() {
                 vm.weightGainAverageData = charts.getBarsData(vm.measures, vm.measure, 'averageWeightGain', 'averageWeightGainExpected');
                 vm.weightAverageData = charts.getBarsData(vm.measures, vm.measure, 'averageWeight', 'averageWeightExpected');
-                vm.breedWeightGainData = charts.getBarsData(vm.measures, vm.measure, 'breeds', 'weightGain', 'averageWeightGain');
+                vm.breedWeightGainData = charts.getLinesData(vm.measures, vm.measure, 'breeds', 'weightGain', 'averageWeightGain');
                 vm.breedWeightData = charts.getLinesData(vm.measures, vm.measure, 'breeds', 'weight', 'averageWeight');
                 vm.categoryWeightGainData = charts.getLinesData(vm.measures, vm.measure, 'categories', 'weightGain', 'averageWeightGain');
                 vm.categoryWeightData = charts.getLinesData(vm.measures, vm.measure, 'categories', 'weight', 'averageWeight');

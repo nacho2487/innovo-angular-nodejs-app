@@ -1,26 +1,38 @@
 /*jshint node:true*/
 'use strict';
 
-var express = require('express');
+var express = require('express'),
+ 	mongoose = require('mongoose'),
+ 	bodyParser = require('body-parser'),
+	errorHandler = require('./routes/utils/errorHandler')();	
+
+var db = mongoose.connect('mongodb://localhost/innovoApi');
+/*
+var Treatment = require('./models/treatmentModel');
+var Animal = require('./models/animalModel');
+var Measure = require('./models/measureModel');*/
+var Batch = require('./models/batchModel');
+
 var app = express();
-var bodyParser = require('body-parser');
-var errorHandler = require('./routes/utils/errorHandler')();
+
 var port = process.env.PORT || 7200;
-var routes;
 
-var environment = process.env.NODE_ENV;
-
+app.use(errorHandler.init);
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
-app.use(errorHandler.init);
 
-routes = require('./routes/index')(app);
+var batchRouter = require('./routes/batchRoutes')(Batch);
 
-//app.use("/bower_components/*", express.static(__dirname + "/bower_components/"));
+app.use('/api/batches', batchRouter);
+app.get('/', function(req, res){
+	res.send("Web api");
+});
+/*routes = require('./routes/index')(app);
+
 app.use('/', express.static('./src/client/'));
 app.use('/', express.static('./'));
-
+*/
 
 app.listen(port, function() {
-    console.log('Express server listening on port ' + port);
-   });
+    console.log('Gulp server is listening on port ' + port);
+});
