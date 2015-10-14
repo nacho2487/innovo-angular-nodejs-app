@@ -1,5 +1,4 @@
 var mongoose = require('mongoose'),
-	treatment =	require('./treatmentModel'),
 	batch =	require('./batchModel'),
 	Schema = mongoose.Schema;
 
@@ -14,7 +13,6 @@ var animalModel = new Schema({
 	healthState: String,
 	weight: Number,
 	dailyWeightGain: Number,
-	treatments: [treatment],
 	batch: batch
 
 });
