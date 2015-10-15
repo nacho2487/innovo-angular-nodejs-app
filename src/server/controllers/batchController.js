@@ -5,7 +5,8 @@ var batchController = function(Batch) {
 			if (err)
 				res.status(500).send(err);
 
-			res.status(201).send(batch);
+			res.status(201)
+			res.send(batch);
 		});
 	};
 	var get = function(req, res) {
