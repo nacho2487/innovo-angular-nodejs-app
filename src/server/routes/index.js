@@ -1,31 +1,35 @@
-module.exports = function(app) {
-    var jsonfileservice = require('./utils/jsonfileservice')();
+var express = require('express');
+var jsonfileservice = require('./utils/jsonfileservice')();
 
-    app.get('/api/batches', getBatches);
+function getAnimal(req, res, next) {
+    var json = jsonfileservice.getJsonFromFile('/../../data/animal.json');
+    res.json(json);
+}
 
-    function getBatches(req, res, next) {
-        var json = jsonfileservice.getJsonFromFile('/../../data/batches.json');
-        res.json(json);
-    }
+function getAnimals(req, res, next) {
+    var json = jsonfileservice.getJsonFromFile('/../../data/animals.json');
+    res.json(json);
+}
 
-    app.get('/api/batches/:id/measures', getBatchMeasures);
+function getBatchMeasures(req, res, next) {
+    var json = jsonfileservice.getJsonFromFile('/../../data/batchMeasures.json');
+    res.json(json);
+}
 
-    function getBatchMeasures(req, res, next) {
-        var json = jsonfileservice.getJsonFromFile('/../../data/batchMeasures.json');
-        res.json(json);
-    }
+function getBatches(req, res, next) {
+    var json = jsonfileservice.getJsonFromFile('/../../data/batches.json');
+    res.json(json);
+}
 
-    app.get('/api/animals', getAnimals);
+var routes = function() {
+    var router = express.Router();
+    router.get('/batches', getBatches);
+    router.get('/batches/:id/measures', getBatchMeasures);
 
-    function getAnimals(req, res, next) {
-        var json = jsonfileservice.getJsonFromFile('/../../data/animals.json');
-        res.json(json);
-    }
+    router.get('/animals', getAnimals);
+    router.get('/animals/:id?', getAnimal);
 
-    app.get('/api/animals/:id?', getAnimal);
 
-    function getAnimal(req, res, next) {
-        var json = jsonfileservice.getJsonFromFile('/../../data/animal.json');
-        res.json(json);
-    }
+    return router;
 };
+module.exports = routes;

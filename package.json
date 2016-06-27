@@ -1,7 +1,7 @@
 {
   "name": "Innovo",
-  "version": "0.0.0",
-  "description": "Innovo",
+  "version": "0.0.1",
+  "description": "Statistics and information business for raising cattle on the countryside.",
   "authors": [
     "Ignacio Olaizola"
   ],
@@ -12,8 +12,7 @@
     "url": "https://github.com/nacho2487/innovo-angular-nodejs-app"
   },
   "scripts": {
-    "init": "npm install",
-    "start": "node src/server/app.js"
+    "start": "node app"
   },
   "dependencies": {
     "angular": "^1.4.7",
@@ -24,13 +23,7 @@
     "express": "^4.13.3",
     "flot": "^0.8.0-alpha",
     "font-awesome": "^4.4.0",
-    "gulp": "^3.9.0",
-    "gulp-mocha": "^2.1.3",
-    "gulp-nodemon": "^2.0.4",
     "jquery": "^2.1.4",
-    "moment": "^2.10.6",
-    "mongoose": "^4.1.10",
-    "should": "^7.1.0",
-    "sinon": "^1.17.1"
+    "moment": "^2.10.6"
   }
 }
